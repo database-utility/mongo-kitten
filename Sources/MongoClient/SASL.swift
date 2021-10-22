@@ -245,7 +245,7 @@ fileprivate extension String {
         for _ in 0..<24 {
             let randomNumber: Int
 
-            #if os(macOS) || os(iOS)
+            #if os(macOS) || os(iOS) || os(watchOS) || os(tvOS)
             randomNumber = Int(arc4random_uniform(UInt32(maxCharacterIndex)))
             #else
             randomNumber = Int(random() % maxCharacterIndex)

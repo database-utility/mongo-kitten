@@ -7,7 +7,9 @@ let package = Package(
     name: "MongoKitten",
     platforms: [
         .macOS(.v10_14),
-        .iOS(.v12)
+        .iOS(.v12),
+        .watchOS(.v5),
+        .tvOS(.v12),
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -29,7 +31,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
     
         // 📈
-        .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0" ..< "3.0.0"),        
+        .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0" ..< "3.0.0"),
         
         // 💾
         .package(url: "https://github.com/OpenKitten/BSON.git", from: "7.0.0"),
