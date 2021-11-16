@@ -148,7 +148,7 @@ public class MongoDatabase {
             throw MongoKittenError(.cannotConnect, reason: .noTargetDatabaseSpecified)
         }
 
-        let cluster = try MongoCluster(lazyConnectingTo: settings, on: group)
+        let cluster = try MongoCluster(lazyConnectingTo: settings, on: group, logger: logger)
         return MongoDatabase(named: targetDatabase, pool: cluster)
     }
 
