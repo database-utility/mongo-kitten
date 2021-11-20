@@ -1,7 +1,12 @@
 import MongoClient
 import NIO
 
-public struct ChangeStreamOptions: Codable {
+public struct ChangeStreamOptions: Encodable {
+    private enum CodingKeys: String, CodingKey {
+        case batchSize
+        case collation
+    }
+    
     public var batchSize: Int32?
     public var collation: Collation?
     public var maxAwaitTimeMS: Int64?
@@ -108,8 +113,8 @@ public struct ChangeStream<T: Decodable> {
                     return self.cursor.base.eventLoop.makeSucceededFuture(())
                 }
                 
-                if let getMoreInterval = getMoreInterval {
-                    return cursor.cursor.eventLoop.flatScheduleTask(in: getMoreInterval) {
+                if let getMoreInterval = self.getMoreInterval {
+                    return self.cursor.cursor.eventLoop.flatScheduleTask(in: getMoreInterval) {
                         nextBatch()
                     }.futureResult
                 } else {

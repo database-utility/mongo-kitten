@@ -57,7 +57,7 @@ let package = Package(
                 dependencies: ["MongoClient"]),
         .target(
             name: "MongoKitten",
-            dependencies: ["MongoClient", "MongoKittenCore"]),
+            dependencies: ["MongoClient", "MongoKittenCore", "NIOCore"]),
         .target(
             name: "Meow",
             dependencies: ["MongoKitten"]),
